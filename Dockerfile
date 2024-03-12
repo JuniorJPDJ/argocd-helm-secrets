@@ -1,5 +1,5 @@
 FROM quay.io/argoproj/argocd:v2.10.2
-ARG BUILDPLATFORM=linux/amd64
+ARG TARGETPLATFORM=linux/amd64
 # Should be overwritten by buildx
 # Supported:
 #  - linux/amd64
@@ -26,17 +26,17 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN curl -fsSL https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${BUILDPLATFORM##*/}/kubectl \
+RUN curl -fsSL https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${TARGETPLATFORM##*/}/kubectl \
     -o /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
 
 # sops backend installation (optional)
-RUN curl -fsSL https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.${BUILDPLATFORM##*/} \
+RUN curl -fsSL https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.${TARGETPLATFORM##*/} \
     -o /usr/local/bin/sops \
     && chmod +x /usr/local/bin/sops
 
 # vals backend installation (optional)
-RUN curl -fsSL https://github.com/helmfile/vals/releases/download/v${VALS_VERSION}/vals_${VALS_VERSION}_linux_${BUILDPLATFORM##*/}.tar.gz \
+RUN curl -fsSL https://github.com/helmfile/vals/releases/download/v${VALS_VERSION}/vals_${VALS_VERSION}_linux_${TARGETPLATFORM##*/}.tar.gz \
     | tar xzf - -C /usr/local/bin/ vals \
     && chmod +x /usr/local/bin/vals
 
