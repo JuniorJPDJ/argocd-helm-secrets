@@ -38,7 +38,7 @@ RUN curl -fsSL https://github.com/helmfile/vals/releases/download/v${VALS_VERSIO
 
 RUN ln -sf "$(helm env HELM_PLUGINS)/helm-secrets/scripts/wrapper/helm.sh" /usr/local/sbin/helm
 
-USER argocd
+USER $ARGOCD_USER_ID
 
 # helm-secrets installation
 RUN helm plugin install --version ${HELM_SECRETS_VERSION} https://github.com/jkroepke/helm-secrets
