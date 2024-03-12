@@ -1,6 +1,9 @@
-ARG BUILDPLATFORM=linux/amd64
-
 FROM quay.io/argoproj/argocd:v2.10.2
+ARG BUILDPLATFORM=linux/amd64
+# Should be overwritten by buildx
+# Supported:
+#  - linux/amd64
+#  - linux/arm64
 
 ARG SOPS_VERSION="3.8.1"
 ARG VALS_VERSION="0.35.0"
