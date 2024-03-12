@@ -1,6 +1,6 @@
 ARG BUILDPLATFORM=linux/amd64
 
-FROM argoproj/argocd:v2.10.2
+FROM quay.io/argoproj/argocd:v2.10.2
 
 ARG SOPS_VERSION="3.8.1"
 ARG VALS_VERSION="0.35.0"
