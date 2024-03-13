@@ -18,7 +18,7 @@ if [[ $DECODING_SECRETS = 1 ]] ; then
   # https://developer.hashicorp.com/vault/api-docs/auth/kubernetes#login
   export VAULT_TOKEN="$(curl -s -X POST -d '{"role": "'"$VAULT_K8S_ROLE"'", "jwt": "'"$K8S_SA_TOKEN"'"}' "$VAULT_ADDR/v1/${VAULT_K8S_MOUNT_PATH:-auth/kubernetes/login}" | jq -r '.auth.client_token | select( . != null )')"
   # if auth failed this should be empty
-
-  # run helm wrapper from helm-secrets
-  exec /home/argocd/.local/share/helm/plugins/helm-secrets/scripts/wrapper/helm.sh "$@"
 fi
+
+# run helm wrapper from helm-secrets
+exec /home/argocd/.local/share/helm/plugins/helm-secrets/scripts/wrapper/helm.sh "$@"
