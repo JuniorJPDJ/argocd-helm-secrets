@@ -1,9 +1,13 @@
 FROM quay.io/argoproj/argocd:v2.10.2
 ARG TARGETARCH
 
+# renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION="3.8.1"
+# renovate: datasource=github-releases depName=helmfile/vals
 ARG VALS_VERSION="0.35.0"
+# renovate: datasource=github-releases depName=jkroepke/helm-secrets
 ARG HELM_SECRETS_VERSION="4.6.0"
+# renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION="1.29.2"
 
 ENV HELM_SECRETS_BACKEND="sops" \
