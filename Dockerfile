@@ -1,4 +1,4 @@
-FROM quay.io/argoproj/argocd:v2.10.2
+FROM quay.io/argoproj/argocd:v2.10.3
 ARG TARGETARCH
 
 ARG SOPS_VERSION="3.8.1"
