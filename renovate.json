@@ -7,10 +7,10 @@
     {
       "customType": "regex",
       "fileMatch": ["(^|/)Dockerfile$"],
-      "matchStrings": [
-        "\\s*#\\s*renovate:\\s*datasource=(?<datasource>.*?)\\s*depName=(?<depName>.*?)(\\s*versioning=(?<versioning>.*?))?\\s(ENV|ARG) .*?_VERSION=\"?(?<currentValue>.*?)\"?\\s"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
+      "matchStrings": [
+        "\\s*#\\s*renovate:\\s*datasource=(?<datasource>.*?)\\s*depName=(?<depName>.*?)(\\s*versioning=(?<versioning>.*?))?\\s(ENV|ARG) .*?_VERSION=\"?(?<currentValue>.*?)\"?\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
     }
   ]
 }
