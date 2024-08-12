@@ -7,6 +7,8 @@ ARG SOPS_VERSION="3.9.0"
 ARG VALS_VERSION="0.37.3"
 # renovate: datasource=github-releases depName=jkroepke/helm-secrets
 ARG HELM_SECRETS_VERSION="4.6.1"
+# renovate: datasource=github-releases depName=aslafy-z/helm-git
+ARG HELM_GIT_VERSION="1.3.0"
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION="1.30.3"
 
@@ -45,5 +47,8 @@ USER $ARGOCD_USER_ID
 
 # helm-secrets installation
 RUN helm plugin install --version ${HELM_SECRETS_VERSION} https://github.com/jkroepke/helm-secrets
+
+# helm-git installation
+RUN helm plugin install --version ${HELM_GIT_VERSION} https://github.com/aslafy-z/helm-git
 
 COPY helm-vault-k8s-auth-wrapper.sh /usr/local/bin/
