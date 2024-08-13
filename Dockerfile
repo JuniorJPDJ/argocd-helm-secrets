@@ -10,7 +10,7 @@ ARG HELM_SECRETS_VERSION="4.6.1"
 # renovate: datasource=github-releases depName=aslafy-z/helm-git
 ARG HELM_GIT_VERSION="1.3.0"
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-ARG KUBECTL_VERSION="1.30.3"
+ARG KUBECTL_VERSION="1.31.0"
 
 ENV HELM_SECRETS_BACKEND="sops" \
     HELM_SECRETS_HELM_PATH=/usr/local/bin/helm \
