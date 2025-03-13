@@ -4,7 +4,7 @@ ARG TARGETARCH
 # renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION="3.9.4"
 # renovate: datasource=github-releases depName=helmfile/vals
-ARG VALS_VERSION="0.39.3"
+ARG VALS_VERSION="0.39.4"
 # renovate: datasource=github-releases depName=jkroepke/helm-secrets
 ARG HELM_SECRETS_VERSION="4.6.3"
 # renovate: datasource=github-releases depName=aslafy-z/helm-git
