@@ -1,4 +1,4 @@
-FROM quay.io/argoproj/argocd:v3.0.7
+FROM quay.io/argoproj/argocd:v3.0.9
 ARG TARGETARCH
 
 # renovate: datasource=github-releases depName=getsops/sops
