@@ -8,7 +8,7 @@ ARG VALS_VERSION="0.42.1"
 # renovate: datasource=github-releases depName=jkroepke/helm-secrets
 ARG HELM_SECRETS_VERSION="v4.6.10"
 # renovate: datasource=github-releases depName=aslafy-z/helm-git
-ARG HELM_GIT_VERSION="1.4.0"
+ARG HELM_GIT_VERSION="1.4.1"
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION="1.34.1"
 
