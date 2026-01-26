@@ -1,0 +1,43 @@
+name: Tag on ArgoCD version change
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Dockerfile'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Get ArgoCD version
+        id: argocd
+        run: |
+          VERSION=$(sed -n 's/^FROM quay.io\/argoproj\/argocd:\(.*\)/\1/p' Dockerfile)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        run: |
+          TAG_NAME="${{ steps.argocd.outputs.version }}"
+          if [ -z "$TAG_NAME" ]; then
+            echo "Error: Could not extract version from Dockerfile"
+            exit 1
+          fi
+
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists. Skipping."
+          else
+            echo "Creating tag $TAG_NAME"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag "$TAG_NAME"
+            git push origin "$TAG_NAME"
+          fi
