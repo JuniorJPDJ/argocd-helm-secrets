@@ -1,6 +1,8 @@
 FROM quay.io/argoproj/argocd:v3.2.6
 ARG TARGETARCH
 
+# renovate: datasource=github-releases depName=mikefarah/yq
+ARG YQ_VERSION="v4.50.1"
 # renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION="3.11.0"
 # renovate: datasource=github-releases depName=helmfile/vals
@@ -25,6 +27,11 @@ RUN apt-get update && \
     apt-get install -y curl jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# yq installation
+RUN curl -fsSL https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${TARGETARCH} \
+    -o /usr/local/bin/yq \
+    && chmod +x /usr/local/bin/yq
 
 # kubectl installation
 RUN curl -fsSL https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/${TARGETARCH}/kubectl \
