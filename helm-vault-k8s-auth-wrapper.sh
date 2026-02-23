@@ -14,7 +14,7 @@ for arg in "$@"; do
   fi
 done
 
-if [[ $DECODING_SECRETS = 1 ]] ; then
+if [[ $DECODING_SECRETS = 1 && -n "$VAULT_ADDR" ]] ; then
   # https://developer.hashicorp.com/vault/api-docs/auth/kubernetes#login
   export VAULT_TOKEN="$(curl -s -X POST -d '{"role": "'"$VAULT_K8S_ROLE"'", "jwt": "'"$K8S_SA_TOKEN"'"}' "$VAULT_ADDR/v1/auth/${VAULT_K8S_MOUNT_PATH:-kubernetes}/login" | jq -r '.auth.client_token | select( . != null )')"
   # if auth failed this should be empty
