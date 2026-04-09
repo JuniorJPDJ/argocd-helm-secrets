@@ -6,7 +6,7 @@ ARG YQ_VERSION="v4.53.2"
 # renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION="3.12.2"
 # renovate: datasource=github-releases depName=helmfile/vals
-ARG VALS_VERSION="0.43.7"
+ARG VALS_VERSION="0.43.9"
 # renovate: datasource=github-releases depName=jkroepke/helm-secrets
 ARG HELM_SECRETS_VERSION="v4.7.6"
 # renovate: datasource=github-releases depName=aslafy-z/helm-git
