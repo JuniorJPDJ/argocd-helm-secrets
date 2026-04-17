@@ -2,7 +2,7 @@ FROM quay.io/argoproj/argocd:v3.3.6
 ARG TARGETARCH
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ARG YQ_VERSION="v4.52.5"
+ARG YQ_VERSION="v4.53.2"
 # renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION="3.12.2"
 # renovate: datasource=github-releases depName=helmfile/vals
