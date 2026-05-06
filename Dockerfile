@@ -1,4 +1,4 @@
-FROM quay.io/argoproj/argocd:v3.3.9
+FROM quay.io/argoproj/argocd:v3.4.1
 ARG TARGETARCH
 
 # renovate: datasource=github-releases depName=mikefarah/yq
