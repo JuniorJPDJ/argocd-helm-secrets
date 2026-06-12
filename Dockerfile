@@ -1,7 +1,7 @@
-FROM viaductoss/ksops:v4.5.1 AS ksops
+FROM viaductoss/ksops:v4.5.1@sha256:4def9fdd4e2f850265740ebe9592c5455d19b76891e88e602df8b52d74b95334 AS ksops
 
 
-FROM quay.io/argoproj/argocd:v3.4.3
+FROM quay.io/argoproj/argocd:v3.4.3@sha256:b6d161b4984c4bffb8c02250252fdd17f23fa4e2aa25fada0e606e1fa08d2348
 ARG TARGETARCH
 
 # renovate: datasource=github-releases depName=mikefarah/yq
