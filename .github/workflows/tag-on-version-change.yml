@@ -22,7 +22,7 @@ jobs:
       - name: Get ArgoCD version
         id: argocd
         run: |
-          VERSION=$(sed -n 's/^FROM quay.io\/argoproj\/argocd:\(.*\)/\1/p' Dockerfile)
+          VERSION=$(sed -n 's/^FROM quay.io\/argoproj\/argocd:\([^@]*\).*/\1/p' Dockerfile)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create and push tag
