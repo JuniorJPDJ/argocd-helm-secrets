@@ -59,10 +59,14 @@ COPY --from=ksops /usr/local/bin/ksops /usr/local/bin/ksops
 USER $ARGOCD_USER_ID
 
 # helm-secrets installation
-RUN helm plugin install --version ${HELM_SECRETS_VERSION} https://github.com/jkroepke/helm-secrets
+# Helm 4: plugins are split into separate packages, installed from release tarballs
+RUN HELM_SECRETS_VERSION="${HELM_SECRETS_VERSION#v}" ; \
+    helm plugin install --verify=false "https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/secrets-${HELM_SECRETS_VERSION}.tgz" ; \
+    helm plugin install --verify=false "https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/secrets-getter-${HELM_SECRETS_VERSION}.tgz" ; \
+    helm plugin install --verify=false "https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/secrets-post-renderer-${HELM_SECRETS_VERSION}.tgz"
 
 # helm-git installation
-RUN helm plugin install --version ${HELM_GIT_VERSION} https://github.com/aslafy-z/helm-git
+RUN helm plugin install --version ${HELM_GIT_VERSION} --verify=false https://github.com/aslafy-z/helm-git
 
 COPY helm-vault-k8s-auth-wrapper.sh ksops-vault.sh /usr/local/bin/
 COPY vault-token-k8s.sh /usr/local/lib/

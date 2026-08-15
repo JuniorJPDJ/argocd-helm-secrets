@@ -17,4 +17,4 @@ if [[ $DECODING_SECRETS = 1 && -n "$VAULT_ADDR" ]] ; then
 fi
 
 # run helm wrapper from helm-secrets
-exec /home/argocd/.local/share/helm/plugins/helm-secrets/scripts/wrapper/helm.sh "$@"
+exec /home/argocd/.local/share/helm/plugins/secrets/scripts/wrapper/helm.sh "$@"
